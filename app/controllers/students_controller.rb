@@ -1,4 +1,10 @@
 class StudentsController < ApplicationController
+
+  def index
+    students = Student.all
+    query = Student.where("name LIKE ?", "%M%")
+  end
+
   def new
     @student = Student.new
   end
