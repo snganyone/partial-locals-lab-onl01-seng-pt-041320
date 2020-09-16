@@ -1,9 +1,10 @@
+require 'pry'
 class StudentsController < ApplicationController
 
   def index
-    @students = Student.all
-    @query = Student.where("name LIKE ?", "%M%")
+    @students = Student.search(params[:query])
   end
+  
 
   def new
     @student = Student.new
@@ -24,10 +25,6 @@ class StudentsController < ApplicationController
 
   def show
     @student = Student.find(params[:id])
-  end
-
-  def index
-    @students = Student.all
   end
 
   def student_params
